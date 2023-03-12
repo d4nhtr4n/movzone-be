@@ -7,13 +7,19 @@ const {
     getMyListSeries,
     deleteMyListSeriesItem,
     addMyListSeriesItem,
+    checkMovieItem,
+    checkSeriesItem,
 } = require("../controllers/myList");
 const { protect } = require("../middleware/auth");
 
 router.route("/getList/movie").get(protect, getMyListMovie);
-router.route("/deleteListItem/movie").delete(protect, deleteMyListMovieItem);
 router.route("/addListItem/movie").put(protect, addMyListMovieItem);
+router.route("/deleteListItem/movie").put(protect, deleteMyListMovieItem);
+router.route("/checkListItem/movie/:id").get(protect, checkMovieItem);
+
 router.route("/getList/series").get(protect, getMyListSeries);
-router.route("/deleteListItem/series").delete(protect, deleteMyListSeriesItem);
 router.route("/addListItem/series").put(protect, addMyListSeriesItem);
+router.route("/deleteListItem/series").put(protect, deleteMyListSeriesItem);
+router.route("/checkListItem/series/:id").get(protect, checkSeriesItem);
+
 module.exports = router;
